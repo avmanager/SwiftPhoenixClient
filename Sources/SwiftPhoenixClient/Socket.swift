@@ -660,7 +660,7 @@ public class Socket: PhoenixTransportDelegate {
   }
 
   /// Builds a fully qualified socket `URL` from `endPoint` and `params`.
-  internal static func buildEndpointUrl(endpoint: String, paramsClosure params: PayloadClosure?) -> URL {
+  internal class func buildEndpointUrl(endpoint: String, paramsClosure params: PayloadClosure?) -> URL {
     guard
       let url = URL(string: endpoint),
       var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
@@ -681,7 +681,7 @@ public class Socket: PhoenixTransportDelegate {
     // If there are parameters, append them to the URL
     if let params = params?() {
       urlComponents.queryItems = params.map {
-        URLQueryItem(name: $0.key, value: String(describing: $0.value))
+        URLQueryItem(name: $0.key, value: String(describing: $0.value).replacingOccurrences(of: "+", with: "%2B"))
       }
     }
 

@@ -20,6 +20,8 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "5.0.0")),
         .package(url: "https://github.com/daltoniam/Starscream.git", .upToNextMinor(from: "3.1.0")),
+        .package(name: "Nimble", url: "https://github.com/Quick/Nimble.git", from: "9.0.0"),
+        .package(name: "Quick", url: "https://github.com/Quick/Quick.git", from: "4.0.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -27,6 +29,30 @@ let package = Package(
         .target(name: "SwiftPhoenixClient", dependencies: []),
         .target(name: "StarscreamSwiftPhoenixClient", dependencies: ["SwiftPhoenixClient", "Starscream"]),
         .target(name: "RxSwiftPhoenixClient", dependencies: ["SwiftPhoenixClient", "RxSwift"]),
-        .testTarget(name: "SwiftPhoenixClientTests", dependencies: ["SwiftPhoenixClient"]),
+        .target(
+            name: "TestSupport",
+            dependencies: [
+                "SwiftPhoenixClient",
+                "Nimble",
+                "Quick"
+            ]
+        ),
+        .testTarget(
+            name: "RxSwiftPhoenixClientTests",
+            dependencies: [
+                "RxSwiftPhoenixClient",
+                "TestSupport",
+                "Nimble",
+                "Quick",
+            ]
+        ),
+        .testTarget(
+            name: "SwiftPhoenixClientTests",
+            dependencies: [
+                "SwiftPhoenixClient",
+                "TestSupport",
+                "Nimble",
+                "Quick",
+            ]),
     ]
 )

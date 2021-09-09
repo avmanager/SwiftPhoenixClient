@@ -8,6 +8,8 @@
 
 import Quick
 import Nimble
+import Foundation
+
 @testable import SwiftPhoenixClient
 
 class HeartbeatTimerSpec: QuickSpec {

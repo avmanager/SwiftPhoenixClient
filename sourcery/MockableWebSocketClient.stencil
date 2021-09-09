@@ -1,6 +1,7 @@
 // swiftlint:disable line_length
 // swiftlint:disable variable_name
 
+import Foundation
 import Starscream
 @testable import SwiftPhoenixClient
 

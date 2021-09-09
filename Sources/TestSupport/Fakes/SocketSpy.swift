@@ -18,14 +18,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+import Foundation
 @testable import SwiftPhoenixClient
 
 class SocketSpy: Socket {
-  
+
   private(set) var pushCalled: Bool?
   private(set) var pushCallCount: Int = 0
   private(set) var pushArgs: [Int: (topic: String, event: String, payload: Payload, ref: String?, joinRef: String?)] = [:]
-  
+
   override func push(topic: String,
                      event: String,
                      payload: Payload,
@@ -41,5 +42,5 @@ class SocketSpy: Socket {
                joinRef: joinRef)
   }
 
-  
+
 }

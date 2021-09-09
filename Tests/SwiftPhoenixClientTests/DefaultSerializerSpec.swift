@@ -7,6 +7,8 @@
 
 import Quick
 import Nimble
+import Foundation
+
 @testable import SwiftPhoenixClient
 
 class DefaultSerializerSpec: QuickSpec {

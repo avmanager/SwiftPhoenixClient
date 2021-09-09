@@ -3,4 +3,4 @@ sources:
 templates:
   - sourcery/
 output:
-  Tests/Mocks/
+  Sources/TestSupport/Mocks/

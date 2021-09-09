@@ -8,6 +8,9 @@
 
 import Quick
 import Nimble
+import Foundation
+import Foundation
+
 @testable import SwiftPhoenixClient
 
 class URLSessionTransportSpec: QuickSpec {
